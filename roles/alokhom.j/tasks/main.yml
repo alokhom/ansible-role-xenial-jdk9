@@ -1,0 +1,19 @@
+---
+# file: oracle-java/tasks/main.yml
+#
+# tasks file
+#
+
+## include OS family specific variables
+
+- name: include OS family/distribution specific variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ role_path }}/defaults/main.yml"
+  tags: installation
+
+## include OS family specific task file
+
+- name: if debian, include family specific task file
+  include: "{{ role_path }}/tasks/debian/main.yml"
+  when: ansible_os_family | lower == 'debian'

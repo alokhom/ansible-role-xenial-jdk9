@@ -1,0 +1,66 @@
+---
+# vars file for ansible-nexus
+---
+#java_packages: "openjdk-8-jdk"
+#INSTALL4J_ADD_VM_PARAMS="-Xms2g -Xmx2g -XX:MaxDirectMemorySize=3g  -Djava.util.prefs.userRoot=/some-other-dir"
+#nexus_port: 8082
+#nexus_timezone: 'Canada/Eastern'
+#nexus_admin_password: "{{ vault_nexus_admin_password }}"
+#nexus_privileges:
+#      - name: Greenfield-all-repos-read
+#        description: 'Read & Browse access to all repos'
+#        repository: '*'
+#        actions:
+#          - read
+#          - browse
+#      - name: Greenfield-project-deploy
+#        description: 'Deployments to company-project'
+#        repository: <>
+#        actions:
+#          - add
+#          - edit
+#    nexus_roles:
+#      - id: Developpers # maps to the LDAP group
+#        name: developers
+#        description: All developers
+#        privileges:
+#          - nx-search-read
+#          - Greenfield-all-repos-read
+#          - Greenfield-project-deploy
+#        roles: []
+#    nexus_local_users:
+#      - username: admin # used as key to update
+#        first_name: GreenField
+#        last_name: CI
+#        email: Greenfield.support@ericsson.com
+#        password: "admin"
+#        roles:
+#          - Developpers # role ID here
+#    nexus_blobstores:
+#      - name: company-artifacts
+#        path: /var/nexus/blobs/company-artifacts
+#    nexus_scheduled_tasks:
+#      - name: compact-blobstore
+#        cron: '0 0 22 * * ?'
+#        typeId: blobstore.compact
+#        taskProperties:
+#          blobstoreName: 'company-artifacts'
+#    nexus_repos_maven_proxy:
+#      - name: central
+#        remote_url: 'https://repo1.maven.org/maven2/'
+#        layout_policy: permissive
+#      - name: other
+#	remote_url: 'URL'
+#	version_policy: permissive
+#    nexus_repos_maven_hosted:
+#      - name: Greenfield-project-maven-hosted
+#        version_policy: mixed
+#        write_policy: allow
+#        blob_store: company-artifacts
+#    nexus_repos_maven_group:
+#      - name: public
+#        member_repos:
+#          - central
+#          - jboss
+#          - vaadin-addons
+#          - jaspersoft

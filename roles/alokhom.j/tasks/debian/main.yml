@@ -1,0 +1,52 @@
+---
+# file: oracle-java/tasks/debian/main.yml
+#
+# Task file to install Oracle Java Development Kit in a system with a Debian based Linux distribution.
+#
+
+
+- apt: update_cache=yes
+
+- stat: path=/tmp/{{ java_package }}.deb
+  register: p
+
+- name: Download deb file once into /tmp
+  shell: wget --no-cookies  "{{ java_package_deb_url }}" -O "/tmp/{{ java_package }}.deb" --even-in-check-mode
+  check_mode: no
+  when: p.stat.exists == False
+  become: true
+
+- stat: path=/tmp/{{ java_package }}.deb
+  register: p1
+
+- name: Install Java package
+  apt: deb="/tmp/{{ java_package }}.deb"
+  become: true
+  when: p1.stat.exists == true
+
+- apt: update_cache=yes
+
+#/etc/sudoers <-- you have to add a JAVA_HOME env permission on /etc/sudoers
+# Defaults   env_keep += "JAVA_HOME"
+- lineinfile:
+    dest: "/etc/sudoers"
+    line: 'Defaults   env_keep += "JAVA_HOME"'
+
+- name: source bashrc Java home
+  shell: "export JAVA_HOME={{ java_home }}"
+  become: true
+  become_method: su
+  become_user: "{{ target_user }}"
+  become_flags: '-s /bin/sh'
+  #when: "'JAVA_HOME' in  ansible_env"
+
+- name: Set JAVA_HOME in /etc/environment file
+  lineinfile: 
+    dest: "/etc/environment"
+    state: present 
+    regexp: '^JAVA_HOME'
+    line: 'JAVA_HOME={{ java_home }}/bin'
+    validate: '/usr/sbin/visudo -cf %s'
+
+
+

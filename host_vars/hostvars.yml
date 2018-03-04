@@ -1,0 +1,24 @@
+---
+# vars file for ansible-nexus host
+---
+#java_packages: "openjdk-8-jdk"
+#httpd_server_name: 'nexus.vm'
+#httpd_setup_enable: true
+#httpd_ssl_certificate_file: "{{ vault_httpd_ssl_certificate_file }}"
+#httpd_ssl_certificate_key_file: "{{ vault_httpd_ssl_certificate_key_file }}"
+#ldap_connections:
+#   - ldap_name: 'Greenfield OpenLDAP'
+#     ldap_protocol: 'ldaps'
+#     ldap_hostname: 'ldap.apphub.ericsson.net'
+#     ldap_port: 636
+#     ldap_search_base: 'dc=Ericsson,dc=net'
+#     ldap_user_base_dn: 'ou=users'
+#     ldap_user_object_class: 'inetOrgPerson'
+#     ldap_user_id_attribute: 'uid'
+#     ldap_user_real_name_attribute: 'cn'
+#     ldap_user_email_attribute: 'mail'
+#     ldap_group_base_dn: 'ou=groups'
+#     ldap_group_object_class: 'posixGroup'
+#     ldap_group_id_attribute: 'cn'
+#     ldap_group_member_attribute: 'memberUid'
+#     ldap_group_member_format: '${username}'

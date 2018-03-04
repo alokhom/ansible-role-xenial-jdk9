@@ -1,0 +1,21 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: alokhom
+  description: Java for xenial and other debian versions
+  company: "about.com/alokhom"
+  license: "license (MIT)"
+  min_ansible_version: 2.4
+  platforms:
+    - name: Ubuntu
+      versions:
+      - all
+  galaxy_tags:
+    - development
+    - system
+    - web
+    - java
+    - jdk
+    - openjdk
+    - oracle

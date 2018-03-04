@@ -1,0 +1,5 @@
+[slapd_servers:children]
+providers
+ 
+[providers]
+10.0.2.5 ansible_user=vagrant ansible_ssh_port=22
